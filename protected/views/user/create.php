@@ -13,6 +13,9 @@ $this->menu=array(
 );
 ?>
 
-<h1>Create User</h1>
+<h1>User Registration</h1>
+<?php if(!empty($successMsg)){ ?>
+	<h2><?php echo $successMsg; ?></h2>
+<?php } ?>
 
 <?php $this->renderPartial('_form', array('model'=>$model)); ?>

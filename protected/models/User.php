@@ -65,7 +65,7 @@ class User extends CActiveRecord
 			'user_id' => 'User',
 			'user_email' => 'User Email',
 			'user_password' => 'User Password',
-			'user_name' => 'User Name',
+			'user_name' => 'User Full Name',
 			'user_level' => 'User Level',
 		);
 	}

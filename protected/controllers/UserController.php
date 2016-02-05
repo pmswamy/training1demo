@@ -44,6 +44,7 @@ class UserController extends Controller
 	public function actionCreate()
 	{
 		$model=new User;
+		$successMsg = '';
 
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
@@ -51,12 +52,15 @@ class UserController extends Controller
 		if(isset($_POST['User']))
 		{
 			$model->attributes=$_POST['User'];
-			if($model->save())
-				$this->redirect(array('view','id'=>$model->user_id));
+			$model->user_level=1;
+			if($model->save()){
+				$successMsg = "Registation Successfull!";
+			}
 		}
 
 		$this->render('create',array(
 			'model'=>$model,
+			'successMsg'=>$successMsg
 		));
 	}
 
