@@ -32,6 +32,7 @@
 				array('label'=>'Home', 'url'=>array('/site/index')),
 				array('label'=>'Register', 'url'=>array('/user/create')),
 				array('label'=>'List a place', 'url'=>array('/listing/create')),
+				array('label'=>'View listings', 'url'=>array('/listing/admin')),
 				array('label'=>'Login', 'url'=>array('/site/login'), 'visible'=>Yii::app()->user->isGuest),
 				array('label'=>'Logout ('.Yii::app()->user->name.')', 'url'=>array('/site/logout'), 'visible'=>!Yii::app()->user->isGuest)
 			),
