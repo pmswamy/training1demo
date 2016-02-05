@@ -10,8 +10,8 @@
  * @property integer $booking_amount
  *
  * The followings are the available model relations:
- * @property Listing $bookingListing
  * @property User $bookingUser
+ * @property Listing $bookingListing
  */
 class Booking extends CActiveRecord
 {
@@ -31,8 +31,8 @@ class Booking extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('booking_id, booking_listing_id, booking_user_id, booking_amount', 'required'),
-			array('booking_id, booking_listing_id, booking_user_id, booking_amount', 'numerical', 'integerOnly'=>true),
+			array('booking_listing_id, booking_user_id, booking_amount', 'required'),
+			array('booking_listing_id, booking_user_id, booking_amount', 'numerical', 'integerOnly'=>true),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
 			array('booking_id, booking_listing_id, booking_user_id, booking_amount', 'safe', 'on'=>'search'),
@@ -47,8 +47,8 @@ class Booking extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'bookingListing' => array(self::BELONGS_TO, 'Listing', 'booking_listing_id'),
 			'bookingUser' => array(self::BELONGS_TO, 'User', 'booking_user_id'),
+			'bookingListing' => array(self::BELONGS_TO, 'Listing', 'booking_listing_id'),
 		);
 	}
 
