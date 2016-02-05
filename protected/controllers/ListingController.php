@@ -70,6 +70,13 @@ class ListingController extends Controller
 		if(isset($_POST['Listing']))
 		{
 			$model->attributes=$_POST['Listing'];
+			
+			if(!Yii::app()->user->isGuest){
+				$user_email = Yii::app()->user->name;
+				$userModel = User::model()->findByAttributes(array('user_email'=>$user_email));
+				$model->listing_owner_user_id = $userModel->user_id;
+			}
+			
 			if($model->save())
 				$this->redirect(array('view','id'=>$model->listing_id));
 		}

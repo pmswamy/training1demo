@@ -32,7 +32,7 @@ class Listing extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('listing_owner_user_id, listing_name, listing_address, listing_price', 'required'),
+			array('listing_name, listing_address, listing_price', 'required'),
 			array('listing_owner_user_id, listing_price', 'numerical', 'integerOnly'=>true),
 			array('listing_name, listing_address', 'length', 'max'=>200),
 			// The following rule is used by search().
