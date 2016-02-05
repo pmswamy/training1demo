@@ -2,3 +2,4 @@ assets/
 .buildpath
 .project
 .settings/
+protected/runtime/
