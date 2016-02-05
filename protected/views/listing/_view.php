@@ -6,7 +6,7 @@
 <div class="view">
 
 	<b><?php echo CHtml::encode($data->getAttributeLabel('listing_id')); ?>:</b>
-	<?php echo CHtml::link(CHtml::encode($data->listing_id), array('view', 'id'=>$data->listing_id)); ?>
+	<?php echo CHtml::encode($data->listing_id); ?>
 	<br />
 
 	<b><?php echo CHtml::encode($data->getAttributeLabel('listing_owner_user_id')); ?>:</b>
@@ -24,6 +24,7 @@
 	<b><?php echo CHtml::encode($data->getAttributeLabel('listing_price')); ?>:</b>
 	<?php echo CHtml::encode($data->listing_price); ?>
 	<br />
-
+	
+	<?php echo CHtml::link('Book this listing', array('booking/create', 'id'=>$data->listing_id)); ?>
 
 </div>

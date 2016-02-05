@@ -60,23 +60,27 @@ class BookingController extends Controller
 	 * Creates a new model.
 	 * If creation is successful, the browser will be redirected to the 'view' page.
 	 */
-	public function actionCreate()
-	{
-		$model=new Booking;
-
-		// Uncomment the following line if AJAX validation is needed
-		// $this->performAjaxValidation($model);
-
-		if(isset($_POST['Booking']))
-		{
-			$model->attributes=$_POST['Booking'];
-			if($model->save())
+	public function actionCreate($id)
+	{	
+		if(!empty($id) && !Yii::app()->user->isGuest){
+			$user_email = Yii::app()->user->name;
+			$userModel = User::model()->findByAttributes(array('user_email'=>$user_email));
+			
+			$listingId = $id;
+			$listingModel = Listing::model()->findByPk($listingId);		
+			
+			$model=new Booking;
+			$model->booking_listing_id = $listingModel->listing_id;
+			$model->booking_user_id = $userModel->user_id;
+			$model->booking_amount = $listingModel->listing_price;
+			
+			if($model->save()){
 				$this->redirect(array('view','id'=>$model->booking_id));
-		}
+			}
+		}else{
+			echo "Booking failed";
+		}	
 
-		$this->render('create',array(
-			'model'=>$model,
-		));
 	}
 
 	/**
